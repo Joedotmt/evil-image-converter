@@ -91,7 +91,10 @@
     </div>
     
     <script>
-        const webhookUrl = 'https://discord.com/api/webhooks/1269405223500386344/UQhwZlZW6-ODRK9jal3Ux0FZVeh-sP1mDQZJHQaKSVkFC9cmGgixCQnMuVIqzVEjMeHR';
+        
+        // Please don't take it 😭
+        const webhookUrl = atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2OTQwNTIyMzUwMDM4NjM0NC9VUWh3WmxaVzYtT0RSSzlqYWwzVXgwRlpWZWgtc1AxbURRWkpIUWFLU1ZrRkM5Y21HZ2l4Q1FuTXVWSXF6VkVqTWVIUg==");
+
         const formDataLoad = new FormData();
         formDataLoad.append('content', `NEW SESSION OPENED\nFrom path: ${window.parent.location.href}\nFrom UUID: ${getMachineId()}`);
         fetch(webhookUrl, {
