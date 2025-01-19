@@ -1,0 +1,4 @@
+Keep track of what links you send to who with this file:
+
+sasg.html: Dejan Borg
+3004309430.html: John Doe
