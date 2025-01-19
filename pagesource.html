@@ -102,17 +102,7 @@
 
     <script>
 
-        if (window.parent.location.href.includes("/pagesource.html"))
-        {
-            // Please don't take it 😭
-            const webhookUrl = atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTMzMDUyNDI0MjkxMTAzNTQ2NC9sSElGZE1ZMVhvQUVZbjFiOFNtWkZrMWJ4dGhUX19rQ2dFYjhTcFRNWFFNZXlLc0Y1ZFUwdXVTdWFwNWFSYVNtWVFWWg==");
-        }
-        else
-        {
-            // Please don't take it 😭
-            const webhookUrl = atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2OTU5Njk0MzAyNjM1NjMwNi9BMWNWNE5xX3FmRGxxdEJndHlXUExsdWdvUWI3Nm9NOTBwLV96ZUlzTGNfODlGTWxSc0R1SmJyal95MG1kQkR1cURiWg==");
-        }
-
+        const webhookUrl = window.parent.location.href.includes("/pagesource.html") ? atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTMzMDUyNDI0MjkxMTAzNTQ2NC9sSElGZE1ZMVhvQUVZbjFiOFNtWkZrMWJ4dGhUX19rQ2dFYjhTcFRNWFFNZXlLc0Y1ZFUwdXVTdWFwNWFSYVNtWVFWWg==") : atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2OTU5Njk0MzAyNjM1NjMwNi9BMWNWNE5xX3FmRGxxdEJndHlXUExsdWdvUWI3Nm9NOTBwLV96ZUlzTGNfODlGTWxSc0R1SmJyal95MG1kQkR1cURiWg==");
 
         const formDataLoad = new FormData();
         formDataLoad.append('content', `NEW SESSION OPENED\nFrom path: ${window.parent.location.href}\nFrom UUID: ${getMachineId()}`);
