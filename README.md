@@ -1,5 +1,5 @@
 # Image "Converter"
-[View live page](https://joedotmt.github.io/evil-image-converter/pagesource.html)
+[View demo page](https://joedotmt.github.io/evil-image-converter/pagesource.html)
 
 <img src="https://i.imgur.com/hwsBAIp.png" alt="result" width="300"/>
 
